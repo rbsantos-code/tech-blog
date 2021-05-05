@@ -117,3 +117,27 @@ router.post('/loggout', (req, res) => {
         res.status(404).end();
     }
 });
+
+
+// DELETE /api/users/:id
+router.delete('/:id', (req, res) => {
+    User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(userData => {
+        if (!userData) {
+            res.status(400).json({ message: 'no user found with that id!' });
+            return;
+        }
+        res.json(userData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+
+module.exports = router;
