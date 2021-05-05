@@ -71,3 +71,35 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+
+// authentication 
+router.post('/login', (req,res) => {
+    User.findOne({
+        where: {
+            username: req.body.username
+        }
+    }).then(userData => {
+        if (!userData) {
+            res.status(400).json({ message: 'invalid username!' });
+            return;
+        }
+        
+        // Verify user
+        const validPassword = userData.checkPassword(req.body.password);
+    
+        if (!validPassword) {
+            res.status(400).json({ message: 'invalid password!' });
+            return;
+        }
+    
+        req.session.save(() => {
+            // declare session variables
+            req.session.user_id = userData.id;
+            req.session.username = userData.username;
+            req.session.loggedIn = true;
+    
+            res.json({ user: userData, message: 'You are now logged in!' })
+        });
+    });
+});
