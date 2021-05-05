@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const e = require('express');
 const { User, Post, Comment  } = require('../../models');
 
 
@@ -102,4 +103,17 @@ router.post('/login', (req,res) => {
             res.json({ user: userData, message: 'You are now logged in!' })
         });
     });
+});
+
+
+// logout route
+router.post('/loggout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        })
+    } 
+    else {
+        res.status(404).end();
+    }
 });
