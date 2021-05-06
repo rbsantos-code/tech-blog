@@ -1,9 +1,9 @@
 <div class="comments">
     {{#each this}}
     <section class="comment">
-        <div class="meta">
+        <h4 class="meta text-light">
             {{user.username}} on {{format_date created_at}}
-        </div>
+        </h4>
         <div class="text">
             {{comment_text}}
         </div>
