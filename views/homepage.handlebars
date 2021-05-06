@@ -1,0 +1,9 @@
+<div class="posts">
+    {{#each posts}}
+    <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+        <h3 class="portfolio-item-title text-light">{{title}}</h3>
+        <h5 class="portfolio-languages">{{body}}</h5>
+        <p>posted by {{User.username}} on {{format_date created_at}}</p>
+    </div>
+    {{/each}}
+</div>
