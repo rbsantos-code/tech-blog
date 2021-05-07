@@ -29,7 +29,7 @@
                 <p>posted by {{user.username}} on {{format_date created_at}}</p>
                 <a class="text-light" href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
             </div>
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Post</a>
+            <a href="/dashboard/edit/{{post.id}}" class="edit-link text-dark">Edit Post</a>
         </li>
         {{/each}}
     </ol>
