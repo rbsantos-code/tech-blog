@@ -21,9 +21,14 @@
 <section>
     <h2>Your posts</h2>
     <ol>
-        {{#each posts as |post|}}
+        {{#each post}}
         <li>
-            {{> homepage posts}}
+            <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+                <h3 class="portfolio-item-title text-light">{{title}}</h3>
+                <h5 class="portfolio-languages">{{body}}</h5>
+                <p>posted by {{user.username}} on {{format_date created_at}}</p>
+                <a class="text-light" href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+            </div>
             <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Post</a>
         </li>
         {{/each}}
