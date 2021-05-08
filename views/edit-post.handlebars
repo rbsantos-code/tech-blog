@@ -1,4 +1,4 @@
-<article class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+<article class="col-12 mb-2 bg-dark text-light p-3">
     <a href="/dashboard" class="text-light">&larr; Back to dashboard</a>
     <h4 class="text-light">
         Edit Post
@@ -13,6 +13,17 @@
         <button type="button" class="delete-post-btn">Delete post</button>
     </form>
 </article>
+
+<form class="comment-form col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+    <div>
+        <h4 class="text-light">Add Comment</h4>
+        <textarea name="comment-body" class="form-input"></textarea>
+    </div>
+    <br>
+    <div>
+        <button type="submit">Add Comment</button>
+    </div>
+</form>
 
 <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
     {{> comments post.comments}}
